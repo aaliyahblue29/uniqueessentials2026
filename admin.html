@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unique Essentials – Owner Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF5EE;--cream-dark:#EDE4D6;--green:#2D5A3D;--green-light:#3D7A55;--rose:#B5637A;--gold:#C9A84C;--text:#1B2B1E;--text-light:#6B7A6E;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Source Sans 3',sans-serif;background:#F0EBE2;color:var(--text);min-height:100vh;}
+
+/* LOGIN */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--green);padding:1rem;}
+.login-box{background:white;border-radius:16px;padding:2.5rem 2rem;width:100%;max-width:360px;text-align:center;}
+.login-box img{width:100px;border-radius:8px;margin-bottom:1rem;}
+.login-box h1{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--green);margin-bottom:0.3rem;}
+.login-box p{color:var(--text-light);font-size:0.85rem;margin-bottom:1.5rem;}
+.l-inp{width:100%;border:1.5px solid var(--cream-dark);border-radius:8px;padding:0.65rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:0.95rem;outline:none;margin-bottom:1rem;}
+.l-inp:focus{border-color:var(--green);}
+.l-btn{width:100%;background:var(--green);color:white;border:none;padding:0.85rem;border-radius:8px;font-family:'Playfair Display',serif;font-size:1rem;cursor:pointer;transition:background 0.2s;}
+.l-btn:hover{background:var(--green-light);}
+.l-err{color:var(--rose);font-size:0.82rem;margin-top:0.5rem;display:none;}
+
+/* DASHBOARD */
+.dash{display:none;}
+.dash-nav{background:var(--green);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,0.2);}
+.dash-nav .dn-brand{font-family:'Playfair Display',serif;color:var(--cream);font-size:1.05rem;}
+.dash-nav .dn-right{display:flex;align-items:center;gap:1rem;}
+.dn-right a{color:rgba(250,245,238,0.7);text-decoration:none;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;}
+.dn-right a:hover{color:var(--cream);}
+.logout-btn{background:rgba(255,255,255,0.12);color:var(--cream);border:none;padding:0.35rem 0.9rem;border-radius:20px;cursor:pointer;font-size:0.8rem;font-family:'Source Sans 3',sans-serif;transition:background 0.2s;}
+.logout-btn:hover{background:rgba(255,255,255,0.22);}
+
+.dash-tabs{background:white;border-bottom:1px solid var(--cream-dark);padding:0 2rem;display:flex;gap:0;}
+.tab-btn{padding:1rem 1.4rem;border:none;background:none;font-family:'Source Sans 3',sans-serif;font-size:0.88rem;cursor:pointer;color:var(--text-light);border-bottom:2.5px solid transparent;transition:all 0.2s;letter-spacing:0.04em;text-transform:uppercase;}
+.tab-btn.active{color:var(--green);border-bottom-color:var(--gold);font-weight:600;}
+
+.dash-body{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+
+/* STAT CARDS */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem;}
+.stat-card{background:white;border-radius:12px;padding:1.25rem 1.4rem;border:1px solid var(--cream-dark);}
+.stat-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-light);margin-bottom:0.4rem;}
+.stat-value{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:600;color:var(--green);}
+.stat-sub{font-size:0.78rem;color:var(--text-light);margin-top:0.2rem;}
+
+/* ORDERS */
+.orders-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.orders-hdr h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green);}
+.filter-sel{border:1.5px solid var(--cream-dark);border-radius:8px;padding:0.4rem 0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.83rem;outline:none;background:white;color:var(--text);cursor:pointer;}
+.order-card{background:white;border:1px solid var(--cream-dark);border-radius:12px;padding:1.25rem 1.4rem;margin-bottom:1rem;position:relative;}
+.order-card.priority{border-left:4px solid var(--rose);}
+.o-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.8rem;}
+.o-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--green);font-weight:600;}
+.o-time{font-size:0.78rem;color:var(--text-light);margin-top:2px;}
+.o-id{font-size:0.7rem;color:var(--text-light);font-family:monospace;}
+.status-badge{padding:0.22rem 0.75rem;border-radius:20px;font-size:0.75rem;font-weight:600;white-space:nowrap;}
+.s-received{background:#FEF3C7;color:#92400E;}
+.s-preparing{background:#DBEAFE;color:#1E40AF;}
+.s-ready{background:#D1FAE5;color:#065F46;}
+.s-completed{background:#F3F4F6;color:#4B5563;}
+.o-items{font-size:0.87rem;color:var(--text);line-height:1.7;margin-bottom:0.8rem;}
+.o-amounts{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:0.9rem;}
+.o-amt{font-size:0.83rem;}
+.o-amt .lbl{color:var(--text-light);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:1px;}
+.o-amt .val{font-weight:600;color:var(--green);}
+.o-dep{color:var(--rose);}
+.o-actions{display:flex;gap:0.5rem;flex-wrap:wrap;}
+.act-btn{border:1.5px solid var(--cream-dark);background:white;padding:0.3rem 0.85rem;border-radius:20px;font-size:0.78rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:all 0.18s;color:var(--text);}
+.act-btn:hover,.act-btn.active{background:var(--green);color:white;border-color:var(--green);}
+.act-btn.done{background:#D1FAE5;color:#065F46;border-color:#6EE7B7;}
+.no-orders{text-align:center;padding:3rem;color:var(--text-light);font-size:0.95rem;}
+
+/* ANALYTICS */
+.analytics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:1rem;}
+.a-card{background:white;border:1px solid var(--cream-dark);border-radius:12px;padding:1.25rem 1.4rem;}
+.a-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem;}
+.a-name{font-family:'Playfair Display',serif;font-size:0.97rem;color:var(--green);font-weight:600;line-height:1.3;}
+.a-rank{background:var(--gold);color:white;font-size:0.72rem;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.a-stats{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.9rem;}
+.a-stat .lbl{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-light);display:block;margin-bottom:2px;}
+.a-stat .val{font-size:1rem;font-weight:600;color:var(--green);}
+.pop-bar-bg{height:7px;background:var(--cream-dark);border-radius:4px;overflow:hidden;}
+.pop-bar{height:100%;background:var(--rose);border-radius:4px;transition:width 0.6s;}
+.pop-label{font-size:0.72rem;color:var(--text-light);margin-top:4px;text-align:right;}
+
+/* COMMENTS TAB */
+.comment-list .rev-card{background:white;border:1px solid var(--cream-dark);border-radius:10px;padding:1.1rem;margin-bottom:0.8rem;}
+.rev-card .rv-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;}
+.rv-stars{color:var(--gold);font-size:0.95rem;}
+.rv-name{font-weight:600;color:var(--green);font-size:0.9rem;}
+.rv-date{font-size:0.73rem;color:var(--text-light);}
+.rv-text{font-size:0.88rem;color:var(--text);line-height:1.6;font-style:italic;}
+
+/* empty */
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--text-light);font-size:0.92rem;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-box">
+    <img src="logo.jpg" alt="Unique Essentials" onerror="this.style.display='none'">
+    <h1>Owner Dashboard</h1>
+    <p>Unique Essentials · Admin Access</p>
+    <input class="l-inp" type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="l-btn" onclick="doLogin()">Sign In</button>
+    <p class="l-err" id="loginErr">Incorrect password. Try again.</p>
+    <p style="margin-top:1.5rem;font-size:0.75rem;color:var(--text-light)"><a href="index.html" style="color:var(--green);text-decoration:none;">← Back to store</a></p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dash" id="dashWrap">
+  <nav class="dash-nav">
+    <span class="dn-brand">Unique Essentials — Dashboard</span>
+    <div class="dn-right">
+      <a href="index.html">← Store</a>
+      <button class="logout-btn" onclick="logout()">Log out</button>
+    </div>
+  </nav>
+  <div class="dash-tabs">
+    <button class="tab-btn active" onclick="showTab('orders',this)">Orders</button>
+    <button class="tab-btn" onclick="showTab('analytics',this)">Analytics</button>
+    <button class="tab-btn" onclick="showTab('reviews',this)">Reviews</button>
+  </div>
+  <div class="dash-body">
+    <!-- ORDERS TAB -->
+    <div id="tab-orders">
+      <div class="stat-row" id="topStats"></div>
+      <div class="orders-hdr">
+        <h2>Order Queue <span id="orderBadge" style="font-size:0.9rem;color:var(--text-light);font-family:'Source Sans 3',sans-serif;font-weight:400"></span></h2>
+        <select class="filter-sel" onchange="renderOrders(this.value)" id="filterSel">
+          <option value="all">All Orders</option>
+          <option value="received">Received</option>
+          <option value="preparing">Preparing</option>
+          <option value="ready">Ready</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+      <div id="ordersList"></div>
+    </div>
+    <!-- ANALYTICS TAB -->
+    <div id="tab-analytics" style="display:none">
+      <div class="stat-row" id="anaStats"></div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green);margin-bottom:0.3rem;">Product Performance</h2>
+      <p style="font-size:0.83rem;color:var(--text-light);margin-bottom:1.2rem;">Ranked by total units sold. Popularity bar is relative to the top seller.</p>
+      <div class="analytics-grid" id="analyticsGrid"></div>
+    </div>
+    <!-- REVIEWS TAB -->
+    <div id="tab-reviews" style="display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green);">Customer Reviews</h2>
+        <span id="revCount" style="font-size:0.83rem;color:var(--text-light);"></span>
+      </div>
+      <div class="comment-list" id="commentList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PASS = 'unique2025';
+const PRODUCTS = ['rosemary','lionsmane','calmbloom','saffron','nettle','bullshot','mooncycle','macarose','goldenwarrior','seamoss'];
+const PNAMES = {
+  rosemary:'Rosemary Clarity Shot',lionsmane:"Lion's Mane Fog Lifter",
+  calmbloom:'Calm Bloom Elixir',saffron:'Saffron Sunrise Tonic',
+  nettle:'Nettle & Pumpkin Seed Brew',bullshot:'The Bull Shot',
+  mooncycle:'Moon Cycle Tonic',macarose:'Maca Rose Fertility Elixir',
+  goldenwarrior:'Golden Warrior Latte',seamoss:'Sea Moss Surge'
+};
+
+function doLogin(){
+  const pw=document.getElementById('pwInput').value;
+  if(pw===PASS){
+    document.getElementById('loginWrap').style.display='none';
+    document.getElementById('dashWrap').style.display='block';
+    initDash();
+  } else {
+    document.getElementById('loginErr').style.display='block';
+  }
+}
+function logout(){document.getElementById('dashWrap').style.display='none';document.getElementById('loginWrap').style.display='flex';document.getElementById('pwInput').value='';}
+
+function getOrders(){return JSON.parse(localStorage.getItem('ue_orders')||'[]');}
+function saveOrders(o){localStorage.setItem('ue_orders',JSON.stringify(o));}
+
+function initDash(){renderTopStats();renderOrders('all');renderAnalytics();renderReviews();}
+
+function showTab(name,btn){
+  ['orders','analytics','reviews'].forEach(t=>document.getElementById('tab-'+t).style.display=t===name?'block':'none');
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(name==='analytics')renderAnalytics();
+  if(name==='reviews')renderReviews();
+}
+
+function renderTopStats(){
+  const orders=getOrders();
+  const active=orders.filter(o=>o.status!=='completed');
+  const revenue=orders.reduce((s,o)=>s+o.amountDue,0);
+  const today=orders.filter(o=>new Date(o.timestamp).toDateString()===new Date().toDateString());
+  document.getElementById('topStats').innerHTML=`
+    <div class="stat-card"><p class="stat-label">Total Orders</p><p class="stat-value">${orders.length}</p><p class="stat-sub">All time</p></div>
+    <div class="stat-card"><p class="stat-label">Active Orders</p><p class="stat-value" style="color:var(--rose)">${active.length}</p><p class="stat-sub">Need attention</p></div>
+    <div class="stat-card"><p class="stat-label">Revenue Collected</p><p class="stat-value">$${revenue.toFixed(2)}</p><p class="stat-sub">Deposits + full payments</p></div>
+    <div class="stat-card"><p class="stat-label">Orders Today</p><p class="stat-value">${today.length}</p><p class="stat-sub">${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'})}</p></div>`;
+}
+
+function renderOrders(filter){
+  filter=filter||document.getElementById('filterSel').value||'all';
+  let orders=getOrders().sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const total=orders.length;
+  if(filter!=='all')orders=orders.filter(o=>o.status===filter);
+  document.getElementById('orderBadge').textContent=`(${orders.length}${filter!=='all'?' '+filter:''} of ${total} total)`;
+  const el=document.getElementById('ordersList');
+  if(!orders.length){el.innerHTML=`<div class="no-orders">No ${filter==='all'?'':filter} orders yet.</div>`;return;}
+  el.innerHTML=orders.map((o,idx)=>{
+    const age=Math.round((Date.now()-new Date(o.timestamp))/60000);
+    const ageStr=age<60?`${age}m ago`:age<1440?`${Math.round(age/60)}h ago`:new Date(o.timestamp).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    const isPriority=o.status==='received'&&age>30;
+    const statusMap={received:'s-received',preparing:'s-preparing',ready:'s-ready',completed:'s-completed'};
+    const statusLabel={received:'Received',preparing:'Preparing',ready:'Ready for Pickup',completed:'Completed'};
+    return `<div class="order-card${isPriority?' priority':''}" id="oc${o.id}">
+      <div class="o-top">
+        <div>
+          <p class="o-name">${o.customer.name}</p>
+          <p class="o-time">Ordered ${ageStr} &middot; ${new Date(o.timestamp).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}</p>
+          <p class="o-id">ID: #${o.id.slice(-6)}</p>
+        </div>
+        <span class="status-badge ${statusMap[o.status]}">${statusLabel[o.status]}</span>
+      </div>
+      <div class="o-items">${o.items.map(i=>`<strong>${i.qty}×</strong> ${i.name} <span style="color:var(--text-light);font-size:0.8rem">(${i.size})</span>`).join(' &nbsp;·&nbsp; ')}</div>
+      <div class="o-amounts">
+        <div class="o-amt"><span class="lbl">Subtotal</span><span class="val">$${o.subtotal.toFixed(2)}</span></div>
+        ${o.tip>0?`<div class="o-amt"><span class="lbl">Tip</span><span class="val">$${o.tip.toFixed(2)}</span></div>`:''}
+        <div class="o-amt"><span class="lbl">Total Order</span><span class="val">$${o.total.toFixed(2)}</span></div>
+        <div class="o-amt"><span class="lbl">${o.depositOnly?'Deposit Paid':'Amount Paid'}</span><span class="val ${o.depositOnly?'o-dep':''}">$${o.amountDue.toFixed(2)}</span></div>
+        ${o.depositOnly?`<div class="o-amt"><span class="lbl">Balance Due</span><span class="val o-dep">$${(o.total-o.amountDue).toFixed(2)}</span></div>`:''}
+      </div>
+      ${o.customer.phone?`<p style="font-size:0.8rem;color:var(--text-light);margin-bottom:0.6rem">📞 ${o.customer.phone} &middot; ✉ ${o.customer.email}</p>`:''}
+      ${o.customer.notes?`<p style="font-size:0.82rem;color:var(--text-light);margin-bottom:0.6rem;font-style:italic;">Notes: ${o.customer.notes}</p>`:''}
+      <div class="o-actions">
+        <button class="act-btn${o.status==='received'?' active':''}" onclick="setStatus('${o.id}','received')">Received</button>
+        <button class="act-btn${o.status==='preparing'?' active':''}" onclick="setStatus('${o.id}','preparing')">Preparing</button>
+        <button class="act-btn${o.status==='ready'?' active':''}" onclick="setStatus('${o.id}','ready')">Ready</button>
+        <button class="act-btn${o.status==='completed'?' done':''}" onclick="setStatus('${o.id}','completed')">✓ Complete</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setStatus(id,status){
+  const orders=getOrders();
+  const o=orders.find(x=>x.id===id);
+  if(o){o.status=status;saveOrders(orders);}
+  renderOrders();renderTopStats();
+}
+
+function renderAnalytics(){
+  const orders=getOrders();
+  // Build per-product stats
+  const stats={};
+  PRODUCTS.forEach(id=>{stats[id]={id,name:PNAMES[id],units:0,revenue:0,orders:0};});
+  orders.forEach(o=>{
+    o.items.forEach(item=>{
+      if(stats[item.id]){
+        stats[item.id].units+=item.qty;
+        stats[item.id].revenue+=item.price*item.qty;
+        stats[item.id].orders+=1;
+      }
+    });
+  });
+  const sorted=Object.values(stats).sort((a,b)=>b.units-a.units);
+  const maxUnits=sorted[0]?.units||1;
+  const totalRev=orders.reduce((s,o)=>s+o.amountDue,0);
+  const totalItems=sorted.reduce((s,p)=>s+p.units,0);
+
+  document.getElementById('anaStats').innerHTML=`
+    <div class="stat-card"><p class="stat-label">Total Revenue</p><p class="stat-value">$${totalRev.toFixed(2)}</p><p class="stat-sub">All collected payments</p></div>
+    <div class="stat-card"><p class="stat-label">Units Sold</p><p class="stat-value">${totalItems}</p><p class="stat-sub">Across all products</p></div>
+    <div class="stat-card"><p class="stat-label">Top Seller</p><p class="stat-value" style="font-size:1rem;padding-top:4px">${sorted[0]?.units?sorted[0].name:'—'}</p><p class="stat-sub">${sorted[0]?.units||0} units sold</p></div>`;
+
+  if(!orders.length){document.getElementById('analyticsGrid').innerHTML='<div class="empty-state">No orders yet — analytics will appear here once customers start ordering.</div>';return;}
+
+  document.getElementById('analyticsGrid').innerHTML=sorted.map((p,i)=>`
+    <div class="a-card">
+      <div class="a-card-top">
+        <p class="a-name">${p.name}</p>
+        <div class="a-rank">${i+1}</div>
+      </div>
+      <div class="a-stats">
+        <div class="a-stat"><span class="lbl">Units Sold</span><span class="val">${p.units}</span></div>
+        <div class="a-stat"><span class="lbl">Order Count</span><span class="val">${p.orders}</span></div>
+        <div class="a-stat"><span class="lbl">Revenue</span><span class="val">$${p.revenue.toFixed(2)}</span></div>
+        <div class="a-stat"><span class="lbl">Avg/Order</span><span class="val">${p.orders?'$'+(p.revenue/p.orders).toFixed(2):'—'}</span></div>
+      </div>
+      <div class="pop-bar-bg"><div class="pop-bar" style="width:${Math.round((p.units/maxUnits)*100)}%"></div></div>
+      <p class="pop-label">Popularity: ${maxUnits>0?Math.round((p.units/maxUnits)*100):0}%</p>
+    </div>`).join('');
+}
+
+function renderReviews(){
+  const revs=JSON.parse(localStorage.getItem('ue_comments')||'[]').slice().reverse();
+  document.getElementById('revCount').textContent=`${revs.length} review${revs.length!==1?'s':''}`;
+  const el=document.getElementById('commentList');
+  if(!revs.length){el.innerHTML='<div class="empty-state">No reviews yet.</div>';return;}
+  el.innerHTML=revs.map(r=>`
+    <div class="rev-card">
+      <div class="rv-top">
+        <div>
+          <p class="rv-name">${r.name}</p>
+          <p class="rv-date">${new Date(r.timestamp).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</p>
+        </div>
+        <span class="rv-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>
+      </div>
+      <p class="rv-text">"${r.comment}"</p>
+    </div>`).join('');
+}
+
+// Auto-refresh orders every 30 seconds
+setInterval(()=>{if(document.getElementById('dashWrap').style.display==='block'){renderOrders();renderTopStats();}},30000);
+</script>
+</body>
+</html>

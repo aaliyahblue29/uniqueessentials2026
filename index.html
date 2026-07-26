@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Unique Essentials – Wellness & Balance, By Design</title>
+
+<!-- Social sharing meta tags -->
+<meta name="description" content="Natural herbal drinks and wellness tonics. Mind, body, and balance — by design.">
+<meta property="og:title" content="Unique Essentials – Wellness & Balance, By Design">
+<meta property="og:description" content="Natural herbal drinks and wellness tonics crafted for mind, mood, hormonal health, and immunity. Order online or find us at local markets.">
+<meta property="og:image" content="logo.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unique Essentials">
+<meta name="twitter:description" content="Natural herbal drinks and wellness tonics. Wellness & Balance, By Design.">
+
+<script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF5EE;
+  --cream-dark: #EDE4D6;
+  --green: #2D5A3D;
+  --green-light: #3D7A55;
+  --rose: #B5637A;
+  --rose-light: #C9849A;
+  --gold: #C9A84C;
+  --text: #1B2B1E;
+  --text-light: #6B7A6E;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text); }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.25rem; height: 58px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.nav-logo { font-family: 'Playfair Display', serif; color: var(--cream); font-size: 1.1rem; font-weight: 600; }
+.nav-right { display: flex; align-items: center; gap: 0.2rem; }
+.nav-link {
+  color: rgba(250,245,238,0.75); text-decoration: none;
+  padding: 0.4rem 0.7rem; font-size: 0.8rem; letter-spacing: 0.06em;
+  text-transform: uppercase; border-radius: 4px; transition: color 0.2s;
+}
+.nav-link:hover { color: var(--cream); }
+.nav-link.hide-mobile { display: inline; }
+.cart-btn {
+  background: var(--rose); color: white; border: none;
+  padding: 0.5rem 1rem; border-radius: 24px; cursor: pointer;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem;
+  display: flex; align-items: center; gap: 6px; margin-left: 0.4rem;
+  transition: background 0.2s; min-height: 40px;
+}
+.cart-btn:hover { background: var(--rose-light); }
+.cart-count {
+  background: var(--gold); color: var(--green); font-weight: 700;
+  width: 20px; height: 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 0.72rem;
+}
+.share-btn {
+  background: rgba(255,255,255,0.15); color: var(--cream); border: none;
+  padding: 0.45rem 0.9rem; border-radius: 24px; cursor: pointer;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem;
+  display: flex; align-items: center; gap: 5px; transition: background 0.2s;
+  min-height: 40px;
+}
+.share-btn:hover { background: rgba(255,255,255,0.25); }
+
+/* HERO */
+.hero {
+  background: var(--green); padding: 3rem 1.5rem 4.5rem;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
+  background: var(--cream); clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero-logo { width: 130px; height: auto; border-radius: 10px; margin: 0 auto 1.25rem; display: block; }
+.hero h1 { font-family: 'Playfair Display', serif; color: var(--cream); font-size: 2.4rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.2; }
+.hero .tagline { color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.75rem; margin-bottom: 1.75rem; }
+.hero-cta {
+  background: var(--rose); color: white; border: none;
+  padding: 0.85rem 2.5rem; border-radius: 32px;
+  font-family: 'Playfair Display', serif; font-size: 1rem; cursor: pointer;
+  letter-spacing: 0.05em; transition: all 0.25s; display: inline-block;
+  min-height: 48px;
+}
+.hero-cta:hover { background: var(--rose-light); transform: translateY(-2px); }
+
+/* PRODUCTS */
+.products-wrap { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1rem; }
+.cat-section { margin-bottom: 3rem; }
+.cat-title {
+  font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green);
+  padding-bottom: 0.45rem; border-bottom: 2px solid var(--gold);
+  display: inline-block; margin-bottom: 1.25rem;
+}
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+
+/* PRODUCT CARD — restructured so overlay only covers top zone */
+.product-card {
+  background: white; border: 1px solid var(--cream-dark);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex; flex-direction: column;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(45,90,61,0.14); }
+
+/* TOP ZONE: color bar + name + info button */
+.card-top {
+  position: relative; cursor: default;
+  padding: 1rem 1.1rem 0.8rem;
+  border-bottom: 1px solid var(--cream-dark);
+}
+.card-bar { height: 6px; margin: -1rem -1.1rem 0.75rem; }
+.card-cat { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-light); margin-bottom: 0.2rem; }
+.card-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--green); font-weight: 600; line-height: 1.3; padding-right: 2rem; }
+
+/* Info icon */
+.info-icon {
+  position: absolute; top: 1rem; right: 0.9rem;
+  background: var(--cream); border: 1.5px solid var(--cream-dark);
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+  font-size: 0.75rem; font-weight: 700; color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.18s; z-index: 2; flex-shrink: 0;
+  font-family: 'Source Sans 3', sans-serif;
+}
+.info-icon:hover { background: var(--green); color: white; border-color: var(--green); }
+
+/* FLOATING POPOVER — completely detached from the card */
+#infoPopover {
+  position: fixed;
+  z-index: 9999;
+  width: 280px;
+  background: rgba(22, 46, 30, 0.97);
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,168,76,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px) scale(0.97);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  backdrop-filter: blur(4px);
+}
+#infoPopover.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* Arrow pointing down toward the card */
+#infoPopover::after {
+  content: '';
+  position: absolute;
+  bottom: -7px; left: 50%; transform: translateX(-50%);
+  width: 13px; height: 7px;
+  background: rgba(22,46,30,0.97);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-left: 1px solid rgba(201,168,76,0.4);
+  border-right: 1px solid rgba(201,168,76,0.4);
+}
+#infoPopover.arrow-up::after {
+  bottom: auto; top: -7px;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.pop-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--gold); margin-bottom: 0.5rem; line-height: 1.3; }
+.pop-desc { font-size: 0.8rem; line-height: 1.62; color: rgba(255,255,255,0.88); margin-bottom: 0.75rem; }
+.pop-label { font-size: 0.63rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.32rem; }
+.pop-benefits { font-size: 0.78rem; line-height: 1.74; color: rgba(255,255,255,0.8); white-space: pre-line; }
+
+/* BOTTOM ZONE: size selector + price + button — always visible, never covered */
+.card-bottom { padding: 0.9rem 1.1rem 1rem; flex: 1; display: flex; flex-direction: column; }
+.size-sel { display: flex; gap: 0.3rem; margin-bottom: 0.85rem; flex-wrap: wrap; }
+.size-btn {
+  border: 1.5px solid var(--cream-dark); background: white;
+  padding: 0.28rem 0.6rem; border-radius: 20px; font-size: 0.78rem;
+  cursor: pointer; transition: all 0.18s; color: var(--text);
+  font-family: 'Source Sans 3', sans-serif; min-height: 34px;
+}
+.size-btn.active, .size-btn:hover { border-color: var(--green); background: var(--green); color: white; }
+.card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.card-price { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--green); }
+.add-btn {
+  background: var(--rose); color: white; border: none;
+  padding: 0.5rem 1.1rem; border-radius: 20px; cursor: pointer;
+  font-size: 0.85rem; font-family: 'Source Sans 3', sans-serif;
+  transition: background 0.18s; min-height: 40px;
+}
+.add-btn:hover { background: var(--rose-light); }
+.add-btn:active { transform: scale(0.96); }
+
+/* CART SIDEBAR */
+.cart-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.42); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.cart-bg.open { opacity: 1; pointer-events: all; }
+.cart-panel {
+  position: fixed; right: -100%; top: 0; width: 400px; max-width: 100vw;
+  height: 100vh; height: 100dvh; background: white; z-index: 201;
+  transition: right 0.34s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.14);
+}
+.cart-panel.open { right: 0; }
+.cart-hdr {
+  background: var(--green); color: var(--cream);
+  padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
+  font-family: 'Playfair Display', serif; font-size: 1.05rem; flex-shrink: 0;
+}
+.x-btn { background: none; border: none; color: var(--cream); font-size: 1.3rem; cursor: pointer; line-height: 1; padding: 0.25rem 0.5rem; }
+.cart-list { flex: 1; overflow-y: auto; padding: 0.75rem 1.1rem; -webkit-overflow-scrolling: touch; }
+.c-item { display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.65rem 0; border-bottom: 1px solid var(--cream-dark); }
+.c-item-info { flex: 1; min-width: 0; }
+.c-item-name { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--green); margin-bottom: 0.1rem; line-height: 1.3; }
+.c-item-size { font-size: 0.76rem; color: var(--text-light); }
+.c-item-price { font-weight: 600; color: var(--green); font-size: 0.9rem; white-space: nowrap; flex-shrink: 0; }
+.qty-row { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.35rem; }
+.qb {
+  width: 28px; height: 28px; border: 1.5px solid var(--cream-dark);
+  background: white; border-radius: 50%; cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center; color: var(--green);
+  font-weight: 700; transition: all 0.15s;
+}
+.qb:hover { border-color: var(--green); background: var(--green); color: white; }
+.qn { font-size: 0.88rem; font-weight: 600; min-width: 18px; text-align: center; }
+.rb { background: none; border: none; color: var(--rose); cursor: pointer; font-size: 1rem; padding: 0.25rem 0.4rem; }
+
+.cart-ft { border-top: 1px solid var(--cream-dark); padding: 0.85rem 1.1rem; background: var(--cream); flex-shrink: 0; }
+.tip-lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-light); margin-bottom: 0.35rem; }
+.tip-opts { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.to {
+  border: 1.5px solid var(--cream-dark); background: white;
+  padding: 0.28rem 0.65rem; border-radius: 20px; font-size: 0.78rem;
+  cursor: pointer; transition: all 0.18s; font-family: 'Source Sans 3', sans-serif;
+  color: var(--text); min-height: 34px;
+}
+.to.on { border-color: var(--gold); background: var(--gold); color: white; font-weight: 600; }
+.tip-custom { width: 80px; border: 1.5px solid var(--cream-dark); border-radius: 20px; padding: 0.28rem 0.65rem; font-size: 0.78rem; font-family: 'Source Sans 3',sans-serif; outline: none; margin-top: 0.4rem; }
+.tip-custom:focus { border-color: var(--gold); }
+.dep-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-top: 1px solid var(--cream-dark); margin-top: 0.5rem; }
+.dep-info { flex: 1; min-width: 0; }
+.dep-lbl { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+.dep-note { font-size: 0.72rem; color: var(--text-light); margin-top: 1px; }
+.tgl { position: relative; width: 42px; height: 24px; cursor: pointer; flex-shrink: 0; }
+.tgl input { opacity: 0; width: 0; height: 0; }
+.tgl-sl { position: absolute; inset: 0; background: var(--cream-dark); border-radius: 24px; transition: 0.28s; }
+.tgl-sl::before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: white; border-radius: 50%; transition: 0.28s; }
+.tgl input:checked + .tgl-sl { background: var(--green); }
+.tgl input:checked + .tgl-sl::before { transform: translateX(18px); }
+.s-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.86rem; margin-bottom: 0.42rem; }
+.s-row.big { font-family: 'Playfair Display', serif; font-size: 1.08rem; font-weight: 600; color: var(--green); border-top: 1.5px solid var(--gold); padding-top: 0.45rem; margin-top: 0.3rem; }
+.go-btn {
+  width: 100%; background: var(--green); color: white; border: none;
+  padding: 0.9rem; border-radius: 8px; font-family: 'Playfair Display', serif;
+  font-size: 0.97rem; cursor: pointer; margin-top: 0.65rem;
+  letter-spacing: 0.04em; transition: background 0.2s; min-height: 48px;
+}
+.go-btn:hover { background: var(--green-light); }
+
+/* MODAL */
+.modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 300; display: none; align-items: flex-end; justify-content: center; padding: 0; }
+.modal-bg.open { display: flex; }
+.modal-box {
+  background: white; border-radius: 20px 20px 0 0; width: 100%; max-width: 520px;
+  max-height: 92vh; max-height: 92dvh; overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-hdr { background: var(--green); color: var(--cream); padding: 1.1rem 1.4rem; border-radius: 20px 20px 0 0; display: flex; justify-content: space-between; align-items: center; font-family: 'Playfair Display', serif; font-size: 1.05rem; position: sticky; top: 0; }
+.modal-body { padding: 1.25rem 1.4rem 2rem; }
+.f-grp { margin-bottom: 0.85rem; }
+.f-lbl { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-light); margin-bottom: 0.28rem; }
+.f-inp { width: 100%; border: 1.5px solid var(--cream-dark); border-radius: 8px; padding: 0.65rem 0.9rem; font-family: 'Source Sans 3', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.2s; background: white; color: var(--text); -webkit-appearance: none; }
+.f-inp:focus { border-color: var(--green); }
+.sum-box { background: var(--cream); border-radius: 8px; padding: 1rem; margin: 0.85rem 0; font-size: 0.87rem; }
+.sum-row { display: flex; justify-content: space-between; margin-bottom: 0.28rem; }
+.sum-total { display: flex; justify-content: space-between; font-weight: 700; color: var(--green); font-family: 'Playfair Display', serif; font-size: 1rem; border-top: 1.5px solid var(--gold); padding-top: 0.45rem; margin-top: 0.45rem; }
+.place-btn { width: 100%; background: var(--rose); color: white; border: none; padding: 1rem; border-radius: 8px; font-family: 'Playfair Display', serif; font-size: 1rem; cursor: pointer; letter-spacing: 0.05em; transition: background 0.2s; margin-top: 0.5rem; min-height: 52px; }
+.place-btn:hover { background: var(--rose-light); }
+.ok-screen { text-align: center; padding: 2.5rem 1.5rem; }
+.ok-screen .ok-icon { font-size: 3rem; margin-bottom: 1rem; }
+.ok-screen h2 { font-family: 'Playfair Display', serif; color: var(--green); margin-bottom: 0.5rem; }
+.ok-screen p { color: var(--text-light); font-size: 0.9rem; line-height: 1.65; }
+
+/* REVIEWS */
+.reviews-section { background: var(--green); padding: 3rem 1rem; }
+.reviews-inner { max-width: 1100px; margin: 0 auto; }
+.reviews-section .cat-title { color: var(--cream); border-bottom-color: var(--gold); }
+.rev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin: 1.25rem 0 2.25rem; }
+.rev-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(201,168,76,0.28); border-radius: 10px; padding: 1.1rem; }
+.rev-stars { color: var(--gold); font-size: 1rem; margin-bottom: 0.4rem; }
+.rev-text { color: rgba(255,255,255,0.84); font-size: 0.87rem; line-height: 1.65; margin-bottom: 0.65rem; font-style: italic; }
+.rev-name { color: var(--gold); font-size: 0.8rem; font-weight: 600; }
+.rev-date { color: rgba(255,255,255,0.4); font-size: 0.72rem; }
+.rev-form { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 1.25rem; max-width: 480px; }
+.rev-form .f-lbl { color: rgba(255,255,255,0.68); }
+.rev-form .f-inp { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.18); color: white; font-size: 0.95rem; }
+.rev-form .f-inp::placeholder { color: rgba(255,255,255,0.38); }
+.rev-form .f-inp:focus { border-color: var(--gold); }
+.star-row { display: flex; gap: 0.25rem; margin-bottom: 0.85rem; }
+.star-b { background: none; border: none; font-size: 1.6rem; cursor: pointer; color: rgba(255,255,255,0.28); transition: color 0.14s; padding: 0; line-height: 1; min-width: 36px; min-height: 36px; display: flex; align-items: center; justify-content: center; }
+.star-b.on { color: var(--gold); }
+.post-btn { background: var(--rose); color: white; border: none; padding: 0.72rem 1.8rem; border-radius: 8px; font-family: 'Playfair Display', serif; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; min-height: 46px; }
+.post-btn:hover { background: var(--rose-light); }
+
+/* PAYMENT METHODS */
+.pay-section-lbl {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--text-light); margin-bottom: 0.6rem; font-weight: 600;
+}
+#sq-apple-pay, #sq-google-pay { margin-bottom: 0.6rem; }
+.pay-divider {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin: 0.6rem 0 1rem; color: var(--text-light); font-size: 0.8rem;
+}
+.pay-divider::before, .pay-divider::after { content: ''; flex: 1; height: 1px; background: var(--cream-dark); }
+#sq-card-container {
+  border: 1.5px solid var(--cream-dark); border-radius: 10px;
+  padding: 0.85rem 1rem; background: white; min-height: 44px;
+}
+.card-pay-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; background: var(--green); color: white; border: none;
+  border-radius: 10px; padding: 0.9rem 1rem; font-size: 1rem;
+  font-family: 'Playfair Display', serif; font-weight: 600; cursor: pointer;
+  min-height: 52px; transition: background 0.18s; margin-top: 0.75rem;
+}
+.card-pay-btn:hover { background: var(--green-light); }
+.pay-error { color: #c0392b; font-size: 0.82rem; margin-top: 0.4rem; display:none; }
+
+/* FOOTER */
+footer { background: #162219; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem 1.5rem; font-size: 0.82rem; }
+.ft-brand { font-family: 'Playfair Display', serif; color: var(--cream); font-size: 1.15rem; margin-bottom: 0.3rem; }
+.ft-tag { color: var(--gold); letter-spacing: 0.15em; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.7rem; }
+footer a { color: rgba(201,168,76,0.8); text-decoration: none; margin: 0 0.5rem; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(120px); background: var(--green); color: white; padding: 0.72rem 1.4rem; border-radius: 28px; font-size: 0.87rem; z-index: 500; transition: transform 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.22); white-space: nowrap; max-width: 90vw; overflow: hidden; text-overflow: ellipsis; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* SHARE TOAST */
+.share-toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(120px); background: var(--green); color: white; padding: 0.8rem 1.5rem; border-radius: 12px; font-size: 0.87rem; z-index: 500; transition: transform 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.22); text-align:center; }
+.share-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* MOBILE RESPONSIVE */
+@media(max-width:640px) {
+  .nav-link.hide-mobile { display: none; }
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 2.5rem 1rem 4rem; }
+  .cat-grid { grid-template-columns: 1fr; }
+  .products-wrap { padding: 2rem 0.75rem; }
+  .cart-panel { width: 100vw; max-width: 100vw; }
+  .modal-bg { align-items: flex-end; }
+  .modal-box { border-radius: 20px 20px 0 0; max-height: 95vh; max-height: 95dvh; }
+  .rev-grid { grid-template-columns: 1fr; }
+  .size-btn { min-height: 38px; font-size: 0.82rem; padding: 0.35rem 0.7rem; }
+}
+@media(min-width:641px) and (max-width:900px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Unique Essentials</span>
+  <div class="nav-right">
+    <a href="#menu" class="nav-link hide-mobile">Menu</a>
+    <a href="#reviews" class="nav-link hide-mobile">Reviews</a>
+    <button class="share-btn" onclick="sharesite()">↑ Share</button>
+    <button class="cart-btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <img src="logo.jpg" alt="Unique Essentials" class="hero-logo" onerror="this.style.display='none'">
+  <h1>Unique Essentials</h1>
+  <p class="tagline">Wellness &amp; Balance, By Design</p>
+  <button class="hero-cta" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Shop Our Drinks</button>
+</section>
+
+<div class="products-wrap" id="menu">
+  <div id="prodContainer"></div>
+</div>
+
+<section class="reviews-section" id="reviews">
+  <div class="reviews-inner">
+    <h2 class="cat-title">Customer Reviews</h2>
+    <div class="rev-grid" id="revGrid"></div>
+    <div class="rev-form">
+      <h3 style="font-family:'Playfair Display',serif;color:var(--cream);margin-bottom:0.85rem;font-size:1rem;font-weight:600;">Leave a Review</h3>
+      <div class="star-row" id="starRow">
+        <button class="star-b" onclick="setRating(1)">★</button>
+        <button class="star-b" onclick="setRating(2)">★</button>
+        <button class="star-b" onclick="setRating(3)">★</button>
+        <button class="star-b" onclick="setRating(4)">★</button>
+        <button class="star-b" onclick="setRating(5)">★</button>
+      </div>
+      <div class="f-grp"><label class="f-lbl">Your Name</label><input class="f-inp" id="rName" placeholder="Jane D."></div>
+      <div class="f-grp"><label class="f-lbl">Your Review</label><textarea class="f-inp" id="rText" rows="3" placeholder="Share your experience..."></textarea></div>
+      <button class="post-btn" onclick="submitReview()">Post Review</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="ft-brand">Unique Essentials</p>
+  <p class="ft-tag">Wellness &amp; Balance, By Design</p>
+  <p>&copy; 2025 Unique Essentials &middot; All rights reserved</p>
+  <p style="margin-top:0.5rem;"><a href="admin.html">Owner Login</a></p>
+</footer>
+
+<!-- Floating info popover -->
+<div id="infoPopover" role="tooltip">
+  <p class="pop-name" id="popName"></p>
+  <p class="pop-desc" id="popDesc"></p>
+  <p class="pop-label">Benefits</p>
+  <p class="pop-benefits" id="popBenefits"></p>
+</div>
+
+<!-- Cart -->
+<div class="cart-bg" id="cartBg" onclick="closeCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-hdr"><span>Your Order</span><button class="x-btn" onclick="closeCart()">✕</button></div>
+  <div class="cart-list" id="cartList"></div>
+  <div class="cart-ft" id="cartFt"></div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="modal-bg" id="checkoutBg" onclick="e=>e.target===this&&closeModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-hdr"><span>Complete Your Order</span><button class="x-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS = [
+  {id:'rosemary',name:'Rosemary Clarity Shot',cat:'Mind & Focus',color:'#3D7A55',
+   desc:'A sharp, bright blend combining memory-boosting rosemary with the calm lift of green tea and a peppercorn finish.',
+   benefits:'Improves memory recall · Calm focus without jitters · Rich in antioxidants · L-theanine from green tea',
+   prices:{'12 oz':7,'Half Gallon':12,'Gallon':20}},
+  {id:'lionsmane',name:"Lion's Mane Fog Lifter",cat:'Mind & Focus',color:'#2D5A3D',
+   desc:"A rich, warming blend built around lion's mane mushroom — one of the most studied functional fungi for brain health. Softened with coconut milk and fresh ginger.",
+   benefits:'Nerve growth factor support · Reduces mental fatigue · Stress reduction via ashwagandha · Anti-inflammatory',
+   prices:{'12 oz':9,'Half Gallon':14,'Gallon':23}},
+  {id:'calmbloom',name:'Calm Bloom Elixir',cat:'Mood & Stress',color:'#B5637A',
+   desc:'A floral, lightly sparkling stress-relief drink blending passionflower, lemon balm, lavender, and chamomile. Light enough to enjoy daily.',
+   benefits:'Reduces anxiety naturally · Lowers cortisol · Nervous system support · Mildly mood-elevating',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':21}},
+  {id:'saffron',name:'Saffron Sunrise Tonic',cat:'Mood & Stress',color:'#C9A84C',
+   desc:'A golden dairy-free tonic built around saffron — clinically studied for mood support — with earthy turmeric, holy basil, and oat milk.',
+   benefits:'Natural serotonin support · Adaptogenic cortisol balance · Anti-inflammatory · Supports mild mood elevation',
+   prices:{'12 oz':10,'Half Gallon':15,'Gallon':25}},
+  {id:'nettle',name:'Nettle & Pumpkin Seed Brew',cat:'Male Reproductive Health',color:'#4A7C5A',
+   desc:'A smooth, citrusy daily tonic for male hormone support. Stinging nettle and saw palmetto support DHT balance while pumpkin seed delivers essential zinc.',
+   benefits:'Supports free testosterone · Prostate health · Rich in zinc · Gentle daily maintenance',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':21}},
+  {id:'bullshot',name:'The Bull Shot',cat:'Male Reproductive Health',color:'#1F3D2A',
+   desc:'A bold, earthy performance blend built around KSM-66 ashwagandha, purified shilajit, maca, and pomegranate for male hormonal energy.',
+   benefits:'Clinically studied testosterone support · Mitochondrial energy · Circulation support · Libido & stamina',
+   prices:{'12 oz':10,'Half Gallon':15,'Gallon':25}},
+  {id:'mooncycle',name:'Moon Cycle Tonic',cat:'Female Reproductive Health',color:'#943055',
+   desc:"A deep red tonic combining vitex, red raspberry leaf, dong quai, hibiscus, and pomegranate — three of the most respected women's herbs in herbal medicine.",
+   benefits:'Cycle regulation & PMS relief · Estrogen balance · Uterine support · Rich in iron',
+   prices:{'12 oz':9,'Half Gallon':14,'Gallon':23}},
+  {id:'macarose',name:'Maca Rose Fertility Elixir',cat:'Female Reproductive Health',color:'#B5637A',
+   desc:'A warming, naturally sweet elixir combining Peruvian maca with Ayurvedic shatavari, rose petals, coconut water, cinnamon, and dates.',
+   benefits:'Estrogen & ovarian support · Libido support · Adaptogenic energy · Blood sugar balance via cinnamon',
+   prices:{'12 oz':9,'Half Gallon':14,'Gallon':23}},
+  {id:'goldenwarrior',name:'Golden Warrior Latte',cat:'Energy & Immunity',color:'#B8860B',
+   desc:'A premium turmeric latte with reishi mushroom, ginger, cinnamon, and manuka honey. Warming, creamy, and deeply nourishing.',
+   benefits:'Powerful anti-inflammatory · Immune modulation via reishi · Antibacterial manuka compounds · Antioxidant-rich',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':22}},
+  {id:'seamoss',name:'Sea Moss Surge',cat:'Energy & Immunity',color:'#2E7D52',
+   desc:'A tropical blend built around wildcrafted Irish sea moss — naturally containing 92 of the 102 minerals the human body needs — with mango, lime, and coconut water.',
+   benefits:'92 minerals in one drink · Thyroid support · Gut health & prebiotic fiber · Natural electrolytes',
+   prices:{'12 oz':9,'Half Gallon':14,'Gallon':23}},
+
+  // Pregnancy-Safe Collection
+  {id:'goldenmama',name:'Golden Mama Latte',cat:'Pregnancy-Safe Collection',color:'#C9A84C',
+   desc:'A warming, anti-inflammatory latte crafted with turmeric, ginger, and coconut milk — soothing, nourishing, and safe for all stages of pregnancy. Supports your immune system from the inside out.',
+   benefits:'Anti-inflammatory · Immune support · Gentle on digestion · Warming & nourishing',
+   prices:{'12 oz':9,'Half Gallon':14,'Gallon':24}},
+  {id:'lgease',name:'LG Ease',cat:'Pregnancy-Safe Collection',color:'#3D7A55',
+   desc:'A gentle, stomach-settling blend of spearmint, ginger, and lemon balm designed to ease nausea and keep digestion calm — especially helpful during the first trimester.',
+   benefits:'Eases nausea · Supports digestion · Calming on the stomach · Light & refreshing',
+   prices:{'12 oz':7,'Half Gallon':12,'Gallon':20}},
+  {id:'rosemama',name:'Rose Mama',cat:'Pregnancy-Safe Collection',color:'#B5637A',
+   desc:'A delicate, floral hydration blend of rose water, hibiscus, and coconut water. Calming and hydrating — a beautiful daily ritual for expectant mothers.',
+   benefits:'Calming · Hydrating · Electrolyte replenishment · Gentle floral comfort',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':22}},
+  {id:'pomegranatepeak',name:'Pomegranate Peak',cat:'Pregnancy-Safe Collection',color:'#943055',
+   desc:'A rich, ruby-red antioxidant blend featuring pomegranate juice, rose hips, and hibiscus — packed with Vitamin C and natural iron to support both mama and baby.',
+   benefits:'Antioxidants · Vitamin C & iron support · Immune defense · Natural energy',
+   prices:{'12 oz':9,'Half Gallon':15,'Gallon':25}},
+  {id:'coconutbliss',name:'Coconut Bliss',cat:'Pregnancy-Safe Collection',color:'#2D5A3D',
+   desc:'A smooth, tropical blend of coconut water, pineapple, and mint that replenishes electrolytes naturally. Light, refreshing energy without caffeine — perfect for any trimester.',
+   benefits:'Natural energy · Electrolytes · Hydration support · Caffeine-free',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':22}},
+  {id:'tropicalspearmint',name:'Tropical Spearmint',cat:'Pregnancy-Safe Collection',color:'#4A7C5A',
+   desc:'A bright, cooling blend of spearmint, mango, and lemon — refreshing and easy on the digestive system. A go-to for anyone needing a gentle, feel-good sip.',
+   benefits:'Refreshing · Gentle on digestion · Cooling & light · Mood-lifting',
+   prices:{'12 oz':7,'Half Gallon':12,'Gallon':20}},
+
+  // Hair & Cognitive Collection
+  {id:'biotinbloom',name:'Biotin Bloom',cat:'Hair & Cognitive Collection',color:'#B8860B',
+   desc:'A nourishing blend built around biotin-rich ingredients, burdock root, and nettle to feed hair follicles from within. Supports growth, strength, and thickness with consistent use.',
+   benefits:'Follicle strength · Growth support · Biotin-rich · Anti-inflammatory scalp support',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':22}},
+  {id:'sippyshine',name:'Sippy Shine',cat:'Hair & Cognitive Collection',color:'#3D7A55',
+   desc:'A silica-rich horsetail and bamboo tonic that strengthens each strand from root to tip. Silica is one of the most powerful minerals for strand elasticity and shine.',
+   benefits:'Silica-rich · Strand strength · Elasticity support · Natural shine boost',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':22}},
+  {id:'rootrenewal',name:'Root Renewal',cat:'Hair & Cognitive Collection',color:'#2D5A3D',
+   desc:'A deeply nourishing scalp tonic featuring sea moss, nettle, and antioxidant-rich berries. Targets the scalp environment to reduce buildup, calm inflammation, and fuel follicle health.',
+   benefits:'Scalp nourishment · Antioxidants · Reduces scalp inflammation · Follicle fuel',
+   prices:{'12 oz':9,'Half Gallon':14,'Gallon':24}},
+  {id:'rosemaryluxury',name:'Rosemary Luxury',cat:'Hair & Cognitive Collection',color:'#4A7C5A',
+   desc:'A circulation-boosting blend centered on rosemary, peppermint, and ginger — clinically recognized for stimulating scalp blood flow and supporting natural hair regrowth.',
+   benefits:'Circulation support · Scalp health · Regrowth stimulation · Refreshing & invigorating',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':22}},
+  {id:'cherryglow',name:'Cherry Glow',cat:'Hair & Cognitive Collection',color:'#943055',
+   desc:'A deep, antioxidant-packed tart cherry and pomegranate drink that fights oxidative stress linked to premature graying. Feeds hair pigment cells from within.',
+   benefits:'Pigment support · Antioxidants · Anti-graying defense · Rich in polyphenols',
+   prices:{'12 oz':9,'Half Gallon':15,'Gallon':25}},
+  {id:'silkbliss',name:'Silk Bliss',cat:'Hair & Cognitive Collection',color:'#B5637A',
+   desc:'A silky, coconut-based scalp hydration tonic loaded with healthy fats from avocado and flaxseed. Nourishes dry, brittle hair from the inside out for soft, supple strands.',
+   benefits:'Scalp hydration · Nourishing fats · Reduces dryness & brittleness · Omega-rich',
+   prices:{'12 oz':7,'Half Gallon':12,'Gallon':20}},
+
+  // Postpartum Recovery Collection
+  {id:'paradiselatte',name:'Paradise Latte',cat:'Postpartum Recovery Collection',color:'#C9A84C',
+   desc:'A rich, golden latte blending turmeric, moringa, and coconut milk to fight postpartum inflammation and restore vital nutrients. Warm, nourishing comfort in every sip.',
+   benefits:'Anti-inflammatory · Supports healing · Nutrient-dense · Deeply warming',
+   prices:{'12 oz':9,'Half Gallon':14,'Gallon':24}},
+  {id:'milkmarie',name:'Milk Marie',cat:'Postpartum Recovery Collection',color:'#3D7A55',
+   desc:'A lactation-supporting tonic blending oat milk, fennel seed, and fenugreek — traditional galactagogues used for generations to support milk production. Gentle on the digestive system.',
+   benefits:'Supports lactation · Digestive comfort · Milk supply support · Gentle & nourishing',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':22}},
+  {id:'ironelements',name:'Iron Elements',cat:'Postpartum Recovery Collection',color:'#1F3D2A',
+   desc:'A blood-rebuilding tonic featuring blackstrap molasses, nettle, beet, and yellow dock root — some of nature\'s most potent plant-based iron sources for postpartum recovery.',
+   benefits:'Iron & blood support · Rebuilds red blood cells · Energy restoration · Rich in B vitamins',
+   prices:{'12 oz':9,'Half Gallon':15,'Gallon':25}},
+  {id:'raspberryrosa',name:'Raspberry Rosa',cat:'Postpartum Recovery Collection',color:'#B5637A',
+   desc:'A bright, tart blend of red raspberry leaf, hibiscus, and rose hip — traditionally used to tone the uterus after birth while delivering essential hydration and Vitamin C.',
+   benefits:'Uterine recovery · Hydration · Vitamin C · Toning & restorative',
+   prices:{'12 oz':8,'Half Gallon':13,'Gallon':22}},
+  {id:'chamomilerecovery',name:'Chamomile Recovery',cat:'Postpartum Recovery Collection',color:'#9B7F40',
+   desc:'A gentle, soothing chamomile and lavender blend crafted to help new mothers wind down, ease postpartum anxiety, and support restorative sleep during one of life\'s most demanding chapters.',
+   benefits:'Relaxation · Sleep support · Anxiety relief · Nervous system calm',
+   prices:{'12 oz':7,'Half Gallon':12,'Gallon':20}},
+  {id:'goldensipper',name:'Golden Sipper',cat:'Postpartum Recovery Collection',color:'#B8860B',
+   desc:'A nutrient-dense gut-healing tonic blending bone broth-inspired herbs, ginger, turmeric, and slippery elm to restore digestive integrity and replenish minerals after birth.',
+   benefits:'Nutrient-dense · Gut healing · Mineral restoration · Anti-inflammatory',
+   prices:{'12 oz':10,'Half Gallon':15,'Gallon':25}},
+];
+
+const CATS=[...new Set(PRODUCTS.map(p=>p.cat))];
+let cart=[],tipType='none',customTip=0,depOnly=false,selRating=0;
+
+// Build product cards
+(function(){
+  const c=document.getElementById('prodContainer');
+  CATS.forEach(cat=>{
+    const ps=PRODUCTS.filter(p=>p.cat===cat);
+    const sec=document.createElement('div');sec.className='cat-section';
+    sec.innerHTML=`<h2 class="cat-title">${cat}</h2><div class="cat-grid" id="g${cat.replace(/\W/g,'')}"></div>`;
+    c.appendChild(sec);
+    const g=sec.querySelector('.cat-grid');
+    ps.forEach(p=>{
+      const sizes=Object.keys(p.prices);
+      const el=document.createElement('div');el.className='product-card';el.dataset.size=sizes[0];
+      el.innerHTML=`
+        <div class="card-top">
+          <div class="card-bar" style="background:${p.color}"></div>
+          <p class="card-cat">${p.cat}</p>
+          <h3 class="card-name">${p.name}</h3>
+          <button class="info-icon" onclick="toggleInfo(event,'${p.id}')" onmouseenter="showPopover(event,'${p.id}')" onmouseleave="hidePopover()" aria-label="Product info">i</button>
+        </div>
+        <div class="card-bottom">
+          <div class="size-sel">${sizes.map((s,i)=>`<button class="size-btn${i===0?' active':''}" onclick="pickSize(event,'${p.id}','${s}')">${s}</button>`).join('')}</div>
+          <div class="card-foot">
+            <span class="card-price" id="pr${p.id}">$${p.prices[sizes[0]]}.00</span>
+            <button class="add-btn" onclick="addItem(event,'${p.id}')">+ Add</button>
+          </div>
+        </div>`;
+      g.appendChild(el);
+    });
+  });
+})();
+
+// Floating popover
+const pop=document.getElementById('infoPopover');
+let popTimer=null, popVisible=false;
+
+function showPopover(e,id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('popName').textContent=p.name;
+  document.getElementById('popDesc').textContent=p.desc;
+  document.getElementById('popBenefits').textContent=p.benefits.split(' · ').map(b=>'• '+b).join('\n');
+  positionPopover(e.target);
+  clearTimeout(popTimer);
+  pop.classList.add('visible');
+  popVisible=true;
+}
+function hidePopover(){
+  popTimer=setTimeout(()=>{pop.classList.remove('visible');popVisible=false;},120);
+}
+function positionPopover(anchor){
+  const r=anchor.getBoundingClientRect();
+  const pw=280, ph=220; // approx popover size
+  const vw=window.innerWidth, vh=window.innerHeight;
+  // Try to place above the anchor
+  let top=r.top-ph-12;
+  let arrowUp=false;
+  if(top<8){top=r.bottom+12;arrowUp=true;} // flip below if not enough space above
+  pop.classList.toggle('arrow-up',arrowUp);
+  // Center horizontally on the anchor icon
+  let left=r.left+r.width/2-pw/2;
+  if(left<8)left=8;
+  if(left+pw>vw-8)left=vw-pw-8;
+  pop.style.left=left+'px';
+  pop.style.top=top+'px';
+}
+
+// Mobile tap to toggle popover
+function toggleInfo(e,id){
+  e.stopPropagation();
+  if(popVisible){hidePopover();pop.classList.remove('visible');popVisible=false;}
+  else{showPopover(e,id);}
+}
+// Tap elsewhere closes popover
+document.addEventListener('click',()=>{if(popVisible){pop.classList.remove('visible');popVisible=false;}});
+
+function pickSize(e,id,size){
+  e.stopPropagation();
+  const p=PRODUCTS.find(x=>x.id===id);
+  const card=e.target.closest('.product-card');
+  card.dataset.size=size;
+  card.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById('pr'+id).textContent='$'+p.prices[size]+'.00';
+}
+function addItem(e,id){
+  e.stopPropagation();
+  const p=PRODUCTS.find(x=>x.id===id);
+  const card=e.target.closest('.product-card');
+  const size=card.dataset.size||Object.keys(p.prices)[0];
+  const price=p.prices[size];
+  const ex=cart.find(i=>i.id===id&&i.size===size);
+  if(ex)ex.qty++;else cart.push({id,name:p.name,size,price,qty:1});
+  updateCount();
+  toast(`Added: ${p.name} (${size})`);
+}
+function updateCount(){document.getElementById('cartCount').textContent=cart.reduce((s,i)=>s+i.qty,0);}
+
+function getSubtotal(){return cart.reduce((s,i)=>s+i.price*i.qty,0);}
+function getTip(){const s=getSubtotal();if(tipType==='none')return 0;if(tipType==='custom')return Math.max(0,parseFloat(customTip)||0);return Math.round(s*(parseInt(tipType)/100)*100)/100;}
+function getTotal(){return getSubtotal()+getTip();}
+function getDue(){const t=getTotal();return depOnly?Math.round(t*0.50*100)/100:t;}
+
+function openCart(){document.getElementById('cartBg').classList.add('open');document.getElementById('cartPanel').classList.add('open');renderCart();}
+function closeCart(){document.getElementById('cartBg').classList.remove('open');document.getElementById('cartPanel').classList.remove('open');}
+function closeModal(){document.getElementById('checkoutBg').classList.remove('open');}
+
+function renderCart(){
+  const list=document.getElementById('cartList'),ft=document.getElementById('cartFt');
+  if(!cart.length){list.innerHTML='<p style="text-align:center;color:var(--text-light);padding:2.5rem 1rem;font-size:0.9rem;">Your cart is empty</p>';ft.innerHTML='';return;}
+  list.innerHTML=cart.map((it,i)=>`
+    <div class="c-item">
+      <div class="c-item-info">
+        <p class="c-item-name">${it.name}</p>
+        <p class="c-item-size">${it.size}</p>
+        <div class="qty-row">
+          <button class="qb" onclick="chQty(${i},-1)">−</button>
+          <span class="qn">${it.qty}</span>
+          <button class="qb" onclick="chQty(${i},1)">+</button>
+          <button class="rb" onclick="rmItem(${i})">✕</button>
+        </div>
+      </div>
+      <span class="c-item-price">$${(it.price*it.qty).toFixed(2)}</span>
+    </div>`).join('');
+  const sub=getSubtotal(),tip=getTip(),total=getTotal(),due=getDue();
+  ft.innerHTML=`
+    <div style="margin-bottom:0.65rem">
+      <p class="tip-lbl">Add a Tip</p>
+      <div class="tip-opts">
+        ${['none','10','15','20'].map(t=>`<button class="to${tipType===t?' on':''}" onclick="setTip('${t}')">${t==='none'?'No Tip':t+'%'}</button>`).join('')}
+        <button class="to${tipType==='custom'?' on':''}" onclick="setTip('custom')">Custom</button>
+      </div>
+      ${tipType==='custom'?`<input class="tip-custom" type="number" min="0" step="0.50" placeholder="$0.00" value="${customTip||''}" oninput="setCTip(this.value)">`:''}
+    </div>
+    <div class="dep-row">
+      <div class="dep-info">
+        <p class="dep-lbl">Pay deposit only (50%)</p>
+        <p class="dep-note">Pay $${(total*0.50).toFixed(2)} now, rest on delivery</p>
+      </div>
+      <label class="tgl"><input type="checkbox" ${depOnly?'checked':''} onchange="setDep(this.checked)"><span class="tgl-sl"></span></label>
+    </div>
+    <div class="s-row"><span>Subtotal</span><span>$${sub.toFixed(2)}</span></div>
+    ${tip>0?`<div class="s-row"><span>Tip</span><span>$${tip.toFixed(2)}</span></div>`:''}
+    ${depOnly?`<div class="s-row" style="color:var(--rose)"><span>Deposit (50%)</span><span>$${due.toFixed(2)}</span></div>`:''}
+    <div class="s-row big"><span>${depOnly?'Deposit Due':'Total'}</span><span>$${due.toFixed(2)}</span></div>
+    <button class="go-btn" onclick="openCheckout()">Proceed to Checkout →</button>`;
+}
+
+function chQty(i,d){cart[i].qty+=d;if(cart[i].qty<1)cart.splice(i,1);updateCount();renderCart();}
+function rmItem(i){cart.splice(i,1);updateCount();renderCart();}
+function setTip(t){tipType=t;renderCart();}
+function setCTip(v){customTip=parseFloat(v)||0;renderCart();}
+function setDep(v){depOnly=v;renderCart();}
+
+// Square credentials
+const SQ_APP_ID='sandbox-sq0idb-NORZ_SzJtM1KEpczn3vTew';
+const SQ_LOC_ID='LFDMWZBQFN91M';
+let _sqCard=null, _sqPayments=null;
+
+async function initSquarePayments(){
+  if(!window.Square){
+    // No SDK — show card form fields manually as fallback
+    const cc=document.getElementById('sq-card-container');
+    if(cc)cc.innerHTML='<p style="color:var(--text-light);font-size:0.82rem;padding:0.25rem 0">Card payment available once site is live at a web address.</p>';
+    return;
+  }
+  try{
+    _sqPayments=Square.payments(SQ_APP_ID,SQ_LOC_ID);
+    const due=getDue();
+    const lineItems=cart.map(i=>({amount:(i.price*i.qty).toFixed(2),label:`${i.name} (${i.size}) ×${i.qty}`}));
+
+    // Card — always initialize
+    try{
+      _sqCard=await _sqPayments.card({style:{'.input-container':{borderRadius:'8px'}}});
+      await _sqCard.attach('#sq-card-container');
+    }catch(e){console.warn('Card init:',e);}
+
+    // Apple Pay & Google Pay — only work on HTTPS
+    const pr=_sqPayments.paymentRequest({countryCode:'US',currencyCode:'USD',lineItems,taxLineItems:[],total:{amount:due.toFixed(2),label:'Unique Essentials'}});
+    let walletShown=false;
+
+    try{
+      const ap=await _sqPayments.applePay(pr);
+      await ap.attach('#sq-apple-pay');
+      document.getElementById('sq-apple-pay').style.display='block';
+      walletShown=true;
+      ap.addEventListener('ontokenization',ev=>{
+        const r=ev.detail.tokenResult;
+        if(r.status==='OK'){confirmPayment('Apple Pay');}
+        else{toast('Apple Pay failed — please use card below.');}
+      });
+    }catch(e){}
+
+    try{
+      const gp=await _sqPayments.googlePay(pr);
+      await gp.attach('#sq-google-pay');
+      document.getElementById('sq-google-pay').style.display='block';
+      walletShown=true;
+      gp.addEventListener('ontokenization',ev=>{
+        const r=ev.detail.tokenResult;
+        if(r.status==='OK'){confirmPayment('Google Pay');}
+        else{toast('Google Pay failed — please use card below.');}
+      });
+    }catch(e){}
+
+    if(walletShown){
+      const d=document.getElementById('sq-wallet-divider');
+      if(d)d.style.display='flex';
+    }
+  }catch(e){console.warn('Square init failed',e);}
+}
+
+async function payByCard(){
+  const name=document.getElementById('cName').value.trim();
+  const email=document.getElementById('cEmail').value.trim();
+  if(!name||!email){toast('Please enter your name and email');return;}
+  const errEl=document.getElementById('card-error');
+  if(errEl)errEl.style.display='none';
+  if(!_sqCard){saveAndConfirm(name,email,'Card');return;}
+  try{
+    const result=await _sqCard.tokenize();
+    if(result.status==='OK'){
+      saveAndConfirm(name,email,'Card');
+    } else {
+      const msg=(result.errors||[]).map(e=>e.message).join(', ')||'Card error — please check your details.';
+      if(errEl){errEl.textContent=msg;errEl.style.display='block';}
+      else toast(msg);
+    }
+  }catch(e){toast('Card processing error. Please try again.');}
+}
+
+function openCheckout(){
+  const sub=getSubtotal(),tip=getTip(),total=getTotal(),due=getDue();
+  document.getElementById('modalBody').innerHTML=`
+    <p class="pay-section-lbl">Quick Pay</p>
+    <div id="sq-apple-pay" style="display:none"></div>
+    <div id="sq-google-pay" style="display:none"></div>
+    <div class="pay-divider" id="sq-wallet-divider" style="display:none"><span>or pay by card</span></div>
+
+    <div class="f-grp"><label class="f-lbl">Full Name *</label><input class="f-inp" id="cName" placeholder="Your name" autocomplete="name"></div>
+    <div class="f-grp"><label class="f-lbl">Email *</label><input class="f-inp" id="cEmail" type="email" placeholder="you@email.com" autocomplete="email"></div>
+    <div class="f-grp"><label class="f-lbl">Phone</label><input class="f-inp" id="cPhone" type="tel" placeholder="(555) 000-0000" autocomplete="tel"></div>
+    <div class="f-grp"><label class="f-lbl">Notes / Special Requests</label><textarea class="f-inp" id="cNotes" rows="2" placeholder="Allergies, delivery notes, etc."></textarea></div>
+
+    <div class="f-grp"><label class="f-lbl">Card Details</label>
+      <div id="sq-card-container"></div>
+      <p class="pay-error" id="card-error"></p>
+    </div>
+
+    <div class="sum-box">
+      <p style="font-weight:600;color:var(--green);margin-bottom:0.5rem;font-family:'Playfair Display',serif;font-size:0.95rem;">Order Summary</p>
+      ${cart.map(i=>`<div class="sum-row"><span>${i.name} × ${i.qty} <span style="color:var(--text-light);font-size:0.78rem">(${i.size})</span></span><span>$${(i.price*i.qty).toFixed(2)}</span></div>`).join('')}
+      ${tip>0?`<div class="sum-row"><span>Tip</span><span>$${tip.toFixed(2)}</span></div>`:''}
+      ${depOnly?`<div class="sum-row" style="color:var(--rose)"><span>Deposit (50%)</span><span>$${due.toFixed(2)}</span></div>`:''}
+      <div class="sum-total"><span>${depOnly?'Amount Due Now':'Total'}</span><span>$${due.toFixed(2)}</span></div>
+    </div>
+    <button class="card-pay-btn" onclick="payByCard()">💳 Pay by Card — $${due.toFixed(2)}</button>`;
+  document.getElementById('checkoutBg').classList.add('open');
+  initSquarePayments();
+}
+
+function confirmPayment(method){
+  const name=document.getElementById('cName')?.value.trim()||'Customer';
+  const email=document.getElementById('cEmail')?.value.trim()||'';
+  if(!name){toast('Please enter your name first');return;}
+  saveAndConfirm(name,email,method);
+}
+
+function saveAndConfirm(name,email,method){
+  const order={id:Date.now().toString(),timestamp:new Date().toISOString(),customer:{name,email,phone:(document.getElementById('cPhone')?.value||'').trim(),notes:(document.getElementById('cNotes')?.value||'').trim()},items:JSON.parse(JSON.stringify(cart)),subtotal:getSubtotal(),tip:getTip(),tipType,depositOnly:depOnly,depositAmount:+(getTotal()*0.50).toFixed(2),amountDue:+getDue().toFixed(2),total:+getTotal().toFixed(2),status:'received',paymentMethod:method||'manual'};
+  const orders=JSON.parse(localStorage.getItem('ue_orders')||'[]');
+  orders.push(order);localStorage.setItem('ue_orders',JSON.stringify(orders));
+  cart=[];tipType='none';customTip=0;depOnly=false;updateCount();
+  document.getElementById('modalBody').innerHTML=`<div class="ok-screen"><p class="ok-icon">🌿</p><h2>Order Received!</h2><p>Thank you, <strong>${name}</strong>.<br>Your order is confirmed${email?' — confirmation sent to <strong>'+email+'</strong>':''}.</p><button class="place-btn" style="max-width:180px;margin:1.5rem auto 0;display:block" onclick="closeModal();closeCart()">Done</button></div>`;
+}
+
+function placeOrder(){payByCard();}
+
+// Reviews
+function renderReviews(){
+  const revs=JSON.parse(localStorage.getItem('ue_comments')||'[]').slice().reverse();
+  const g=document.getElementById('revGrid');
+  if(!revs.length){g.innerHTML='<p style="color:rgba(255,255,255,0.48);font-size:0.88rem;font-style:italic;">No reviews yet — be the first!</p>';return;}
+  g.innerHTML=revs.map(r=>`<div class="rev-card"><p class="rev-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</p><p class="rev-text">"${r.comment}"</p><p class="rev-name">${r.name}</p><p class="rev-date">${new Date(r.timestamp).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</p></div>`).join('');
+}
+function setRating(n){selRating=n;document.querySelectorAll('.star-b').forEach((b,i)=>b.classList.toggle('on',i<n));}
+function submitReview(){
+  const name=document.getElementById('rName').value.trim();
+  const text=document.getElementById('rText').value.trim();
+  if(!name||!text||!selRating){toast('Please add your name, a star rating, and your review');return;}
+  const revs=JSON.parse(localStorage.getItem('ue_comments')||'[]');
+  revs.push({id:Date.now().toString(),name,rating:selRating,comment:text,timestamp:new Date().toISOString()});
+  localStorage.setItem('ue_comments',JSON.stringify(revs));
+  document.getElementById('rName').value='';document.getElementById('rText').value='';
+  selRating=0;document.querySelectorAll('.star-b').forEach(b=>b.classList.remove('on'));
+  renderReviews();toast('Review posted — thank you!');
+}
+
+// Share
+function sharesite(){
+  const data={title:'Unique Essentials',text:'Natural herbal drinks & wellness tonics — Wellness & Balance, By Design',url:window.location.href};
+  if(navigator.share){navigator.share(data).catch(()=>{});}
+  else{navigator.clipboard.writeText(window.location.href).then(()=>toast('Link copied to clipboard!')).catch(()=>toast('Copy this link: '+window.location.href));}
+}
+
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+
+renderReviews();updateCount();
+</script>
+</body>
+</html>
